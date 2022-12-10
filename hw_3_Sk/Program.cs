@@ -1,5 +1,7 @@
 ﻿// Задача 1 - Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом (зеркальным).
 
+/*
+
 int DigitNum(int num, int digit)
 {
     while (num != 0)
@@ -35,7 +37,7 @@ bool IsMirrorNum(int num, int pow)
 }
 
 
-Console.Write("Введите положительное 5тизначное число: "); //задача имеет смысл и проверка имеет смысл только если в числе хотя бы 2 разряда
+Console.Write("Введите положительное число от 10 и выше: "); //задача имеет смысл и проверка имеет смысл только если в числе хотя бы 2 разряда
 int number = Convert.ToInt32(Console.ReadLine());
 int power = 0;
 bool result = false;
@@ -49,27 +51,67 @@ else
     if (result == true) Console.WriteLine("Это число является палиндромом (зеркальным)");
 }
 
-
+*/
 
 
 
 // Задача 2 - Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
 
-
 /*
-Console.Write("x = ");
-double xA = Convert.ToDouble(Console.ReadLine());
-Console.Write("y = ");
-double yA = Convert.ToDouble(Console.ReadLine());
-Console.Write("z = ");
-double zA = Convert.ToDouble(Console.ReadLine());
+
+void GetCordinates(string[] axis, double[] cordinate)
+{
+    int index = 0;
+    while (index < 3)
+    {
+        Console.Write(axis[index] + " = ");
+        cordinate[index] = Convert.ToDouble(Console.ReadLine());
+        index++;
+    }
+}
+
+double LengthAB(double[] cordinatesA, double[] cordinatesB)
+{
+    int index = 0;
+    double tempMax;
+    double tempMin;
+    double resultTemp = 0;
+    while (index < 3)
+    {
+        if (cordinatesA[index] > cordinatesB[index])
+        {
+            tempMax = cordinatesA[index];
+            tempMin = cordinatesB[index];
+        }
+        else
+        {
+            tempMax = cordinatesB[index];
+            tempMin = cordinatesA[index];
+        }
+
+        resultTemp = resultTemp + Math.Pow((tempMax - tempMin), 2);
+        //Console.WriteLine(resultTemp); // для проверки
+        index++;
+    }
+    return Math.Sqrt(resultTemp);
+}
+
+string[] axes = { "x", "y", "z" };
+double[] pointA = new double[3];
+double[] pointB = new double[3];
 
 Console.WriteLine("Input coordinates point A:");
+GetCordinates(axes, pointA);
+Console.WriteLine("Input coordinates point B:");
+GetCordinates(axes, pointB);
 
+// Console.WriteLine(pointA[0] + ", " + pointA[1] + ", " + pointA[2]); // для проверки
+// Console.WriteLine(pointB[0] + ", " + pointB[1] + ", " + pointB[2]); // для проверки
 
+double result = Math.Round(LengthAB(pointA, pointB), 4);
+Console.WriteLine("Длина отрезка АВ = " + result);
 
 */
-
 
 
 // Задача 3 - Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
