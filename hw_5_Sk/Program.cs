@@ -1,14 +1,9 @@
-﻿int[] CreateRandomIntArray(int[] arr, int min, int max)
+﻿//Методы, общие для 1 и 2 задач:
+/*
+int[] CreateRandomIntArray(int[] arr, int min, int max)
 {
     for (int i = 0; i < arr.Length; i++)
         arr[i] = new Random().Next(min, max);
-    return arr;
-}
-
-double[] CreateRandomDoubleArray(double[] arr, int min, int max)
-{
-    for (int i = 0; i < arr.Length; i++)
-        arr[i] = Math.Round((new Random().Next(min, max) + new Random().NextDouble()), 2);
     return arr;
 }
 
@@ -19,12 +14,7 @@ void ShowArray(int[] arr)
     Console.WriteLine();
 }
 
-void ShowDoubleArray(double[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-        Console.Write(arr[i] + " ");
-    Console.WriteLine();
-}
+*/
 
 // Задача 1 - Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
 
@@ -74,6 +64,20 @@ Console.WriteLine("Сумма нечетных элементов массива
 
 // Задача 3 - Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 
+/*
+double[] CreateRandomDoubleArray(double[] arr, int min, int max)
+{
+    for (int i = 0; i < arr.Length; i++)
+        arr[i] = Math.Round((new Random().Next(min, max) + new Random().NextDouble()), 2);
+    return arr;
+}
+
+void ShowDoubleArray(double[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+        Console.Write(arr[i] + " ");
+    Console.WriteLine();
+}
 
 double DifferensMinMaxOfArray(double[] arr)
 {
@@ -104,3 +108,4 @@ ShowDoubleArray(myArray3);
 double result = Math.Round(DifferensMinMaxOfArray(myArray3), 2);
 Console.WriteLine("Разница между максимальным и минимальным элементов массива = " + result);
 
+*/
