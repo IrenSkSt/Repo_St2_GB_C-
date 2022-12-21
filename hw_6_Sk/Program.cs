@@ -26,7 +26,7 @@ Console.WriteLine($"Вы ввели чисел в количестве: {quantit
 // Задача 2 - Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем. (дополнить вариантами: совпадают, не пересекаются(параллельные))
 
 
-void GetUserArguments(int[] arr)
+void GetUserArguments(double[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
     {
@@ -36,44 +36,49 @@ void GetUserArguments(int[] arr)
     }
 }
 
-void xyPointsOnLines(int[] arr, double[] xy) // так не работает
+void xyPointsOnLines(double[] arr, double[] xy)
 {
-    xy[1] = (arr[1] - arr[1 + 2]) / (arr[0] - arr[0 + 2]);
-    xy[2] = arr[1] * xy[1] + arr[1 + 2];
-
+    xy[0] = (arr[3] - arr[1]) / (arr[0] - arr[2]);
+    xy[1] = arr[2] * xy[0] + arr[3];
 }
 
-// bool TestResult()
-// {
-
-// }
-
-void ShowSolution(int[] arr, double[] xy)
+bool TestResult(double[] arr, double[] xy)
 {
-    if (arr[0] == arr[0 + 2])
-        if (arr[1] == arr[1 + 2]) Console.WriteLine("множество точек пересечения - прямые совпадают");
-        else Console.WriteLine("нет точки пересечения - прямые параллельны");
+    bool result = true;
+    if (xy[1] != arr[0] * xy[0] + arr[1] && xy[1] != arr[2] * xy[0] + arr[3]) result = false;
+    Console.WriteLine($"{xy[1]} = {arr[0]} * {xy[0]} + {arr[1]}"); // для проверки
+    Console.WriteLine($"{xy[1]} = {arr[2]} * {xy[0]} + {arr[3]}"); // для проверки
+    return result;
+}
+
+void ShowSolution(double[] arr, double[] xy)
+{
+    if (arr[0] == arr[2])
+        if (arr[1] == arr[3]) Console.WriteLine("множество точек пересечения (прямые совпадают)"); //т.е. заданы одинаковым уравнением
+        else Console.WriteLine("нет точки пересечения (прямые параллельны)"); // кх - угол наклона к Оси Х, b определяют расстояние между прямыми
     else
     {
         xyPointsOnLines(arr, xy);
-        Console.WriteLine($"Точка пересечения с координатами (x, y) = ({xy[1]},{xy[2]})");
+        Console.WriteLine($"координаты точки пересечения (x, y) = ({Math.Round(xy[0], 2)}, {Math.Round(xy[1], 2)})"); //ищем, если не относятся к 2м другим вариантам
     }
+    Console.WriteLine("для прямых, заданных следующими уравнениями:");
+    Console.WriteLine($"у = {arr[0]}x + {arr[1]}");
+    Console.WriteLine($"у = {arr[2]}x + {arr[3]}");
 }
 
 Console.WriteLine("Две прямые заданы в плоскости следующим уравнением: у = kx + b");
 Console.WriteLine("Укажите значение k и b для каждой прямой, чтобы узнать точку их пересечения в плоскости:");
-int[] arrayUser = new int[4];
+double[] arrayUser = new double[4];
 double[] xyPoint = new double[2];
 
 GetUserArguments(arrayUser);
 // xyPointsOnLines(arrayUser, xyPoint); // нужно ветвление (иначе деление на ноль)
 ShowSolution(arrayUser, xyPoint);
 
-// double x = arrayUser[0]; // для проверки
-// Console.WriteLine(); // для проверки
+// Console.WriteLine("для прямых, заданных следующими уравнениями:");
+// Console.WriteLine($"у = {arrayUser[0]}x + {arrayUser[1]}");
+// Console.WriteLine($"у = {arrayUser[2]}x + {arrayUser[3]}");
 
-Console.WriteLine("Точка пересечения с координатами (x, y) = ({},{}) для прямых, заданных следующими уравнениями:");
-Console.WriteLine($"у = {arrayUser[0]}x + {arrayUser[1]}");
-Console.WriteLine($"у = {arrayUser[2]}x + {arrayUser[3]}");
-
+bool test = TestResult(arrayUser, xyPoint); // для проверки
+Console.WriteLine(test); // для проверки
 
