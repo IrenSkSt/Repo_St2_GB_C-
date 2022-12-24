@@ -1,6 +1,6 @@
 ﻿
 // Задача 1 - Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
-
+// код задачи 1 используется для задачи 2
 
 double[,] CreateArray2d()
 {
@@ -42,12 +42,28 @@ double[,] array2dRandom = CreateArray2d();
 ShowArray2dDouble(array2dRandom);
 
 
-
-
-// Задача 2 - Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+// Задача 2 - Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет. Позицию смотрим пользовательскую (т.е. старт с 1).
 
 // Важно! Задача выполнена в продолжение предыдущей.
+bool FindElementOfArr(double[,] arr, int row, int column)
+{
+    if (row > arr.GetLength(0) || column > arr.GetLength(1))
+        return false;
+    return true;
+}
 
+Console.Write("What is the row-position for show element? ");
+int rowElem = Convert.ToInt32(Console.ReadLine());
+Console.Write("What is the column-position for show element? ");
+int columnElem = Convert.ToInt32(Console.ReadLine());
+
+bool result = FindElementOfArr(array2dRandom, rowElem, columnElem);
+if (result == false) Console.WriteLine("Element of array not found.");
+else
+{
+    double element = array2dRandom[rowElem - 1, columnElem - 1];
+    Console.WriteLine($"Element of array with position: {rowElem} row and {columnElem} column = {element}");
+}
 
 
 
