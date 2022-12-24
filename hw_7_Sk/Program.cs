@@ -1,17 +1,17 @@
 ﻿
 // Задача 1 - Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
-void ShowArray(int[,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-            Console.Write(arr[i, j] + "\t");
-        Console.WriteLine();
-    }
-    Console.WriteLine();
+// void ShowArray2dDouble(double[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//             Console.Write(arr[i, j] + "\t");
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
 
-}
+// }
 
 
 // Задача 2 - Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
@@ -47,7 +47,7 @@ int[,] CreateArray()
     return arr;
 }
 
-void ShowArrayInt(int[,] arr)
+void ShowArray2dInt(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
@@ -59,22 +59,37 @@ void ShowArrayInt(int[,] arr)
 
 }
 
-double[] AverageOfColumns(int arr[,])
+void ShowArrayDouble(double[] arr)
 {
-    double[] result = new double[arr.GetLength(1)];
-    for (int j = 0; j < arr.GetLength(1); j++)
+    Console.WriteLine("Average of each column: ");
+    for (int i = 0; i < arr.Length; i++)
+        Console.Write(Math.Round(arr[i], 1) + "\t");
+    Console.WriteLine();
+}
+
+void AverageOfColumns(int[,] arr, double[] arrRes)
+{
+    for (int j = 0, k = 0; j < arr.GetLength(1) && k < arrRes.Length; j++, k++)
     {
-        int sum = 0;
-        for (int i = 0; i < arr.GetLength(0); j++)
-            sum += arr[i, j];
+        double sum = 0;
+        for (int i = 0; i < arr.GetLength(0); i++) sum = sum + arr[i, j];
+
+        arrRes[k] = sum / arr.GetLength(0);
+        //Console.Write(arrRes[k]); //для проверки
     }
-
-
-    return;
 }
 
 int[,] arrayUser = CreateArray();
-ShowArrayInt(arrayUser);
-double[] arrayResult = AverageOfColumns(arrayUser);
+ShowArray2dInt(arrayUser);
+double[] arrayResult = new double[arrayUser.GetLength(1)];
+
+AverageOfColumns(arrayUser, arrayResult);
+ShowArrayDouble(arrayResult);
 
 
+
+// // Тест Задачи 3:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
