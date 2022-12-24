@@ -1,17 +1,47 @@
 ﻿
 // Задача 1 - Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
-// void ShowArray2dDouble(double[,] arr)
-// {
-//     for (int i = 0; i < arr.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < arr.GetLength(1); j++)
-//             Console.Write(arr[i, j] + "\t");
-//         Console.WriteLine();
-//     }
-//     Console.WriteLine();
 
-// }
+double[,] CreateArray2d()
+{
+    Console.Write("Input number of rows: ");
+    int rows = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input number of columns: ");
+    int columns = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input min posible value: ");
+    int min = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input max posible value: ");
+    int max = Convert.ToInt32(Console.ReadLine());
+
+    double[,] arr = new double[rows, columns];
+
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            arr[i, j] = new Random().Next(min, max + 1);
+        }
+    }
+
+    return arr;
+}
+
+void ShowArray2dDouble(double[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+            Console.Write(arr[i, j] + "\t");
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+
+}
+
+double[,] array2dRandom = CreateArray2d();
+ShowArray2dDouble(array2dRandom);
+
+
 
 
 // Задача 2 - Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
@@ -23,6 +53,7 @@
 
 // Задача 3 - Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
+/*
 int[,] CreateArray()
 {
     Console.WriteLine("Input size array: ");
@@ -86,7 +117,7 @@ double[] arrayResult = new double[arrayUser.GetLength(1)];
 AverageOfColumns(arrayUser, arrayResult);
 ShowArrayDouble(arrayResult);
 
-
+*/
 
 // // Тест Задачи 3:
 // 1 4 7 2
