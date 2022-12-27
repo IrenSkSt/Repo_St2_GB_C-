@@ -60,11 +60,34 @@ ShowArray2d(arrayRandom);
 */
 
 
-// Задача 2 - Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+// Задача 2 - Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов. (Указываем пользовательский номер строки, т.е. нумерация - с 1).
 
+/*
 
+int FindMinSumElementsOfRow(int[,] arr)
+{
+    int minSum = 0;
+    int minRow = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < arr.GetLength(1); j++)
+            sum += arr[i, j];
+        if (sum < minSum)
+        {
+            minSum = sum;
+            minRow = i;
+        }
+        Console.WriteLine(i + "стр - сумма: " + sum); //для проверки
+    }
+    return minRow;
+}
 
-
+int[,] arrayRandom = CreateArray2d();
+ShowArray2d(arrayRandom);
+int rowMinSumElem = FindMinSumElementsOfRow(arrayRandom);
+Console.WriteLine("Minimum sum of elements in row № " + (rowMinSumElem + 1));
+*/
 
 
 // Задача 3 - Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
