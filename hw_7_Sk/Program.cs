@@ -19,7 +19,7 @@ double[,] CreateArray2d()
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            arr[i, j] = new Random().Next(min, max + 1);
+            arr[i, j] = new Random().Next(min, max + 1) + Math.Round(new Random().NextDouble(), 1);
         }
     }
 
