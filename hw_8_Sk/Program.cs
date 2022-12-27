@@ -126,7 +126,9 @@ else Console.WriteLine("Матрицу1 нельзя перемножить на
 
 
 
-// Задача 4 - Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+// Задача 4 - Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента. Вывод слоями.
+
+
 
 
 
@@ -134,5 +136,81 @@ else Console.WriteLine("Матрицу1 нельзя перемножить на
 
 
 // Задача 5 - Напишите программу, которая заполнит спирально массив 4 на 4.
+
+// void FillSpiralArray2d(int[,] arr)
+// {
+//     int size = arr.GetLength(0);
+//     int count = 0;
+//     int rowCount = 0;
+//     int columnCount = 0;
+
+//     while (count < arr.Length)
+//     {
+//         for (int i = rowCount, j = columnCount; j < size; j++)
+//         {
+//             count++;
+//             arr[i, j] = count;
+
+//         }
+//         rowCount++;
+//         columnCount = size - 1;
+//         for (int i = rowCount, j = columnCount; i < size; i++)
+//         {
+//             count++;
+//             arr[i, j] = count;
+//         }
+//         rowCount = size - 1;
+//         columnCount--;
+//         for (int i = rowCount, j = columnCount; j >= 0; j--)
+//         {
+//             count++;
+//             arr[i, j] = count;
+//         }
+//         rowCount--;
+//         columnCount = 0;
+//         for (int i = rowCount, j = columnCount; i >= 0 + 1; i--)
+//         {
+//             count++;
+//             arr[i, j] = count;
+//         }
+//         rowCount = 0 + 1;
+//         columnCount = 0;
+//     }
+
+
+
+//     // {
+//     //     for (int i = 0, j = 0; j < 4; j++)
+//     //     {
+//     //         count++;
+//     //         arr[i, j] = count;
+//     //     }
+
+//     //     for (int i = 1, j = 4 - 1; i < 4; i++)
+//     //     {
+//     //         count++;
+//     //         arr[i, j] = count;
+//     //     }
+//     //     for (int i = 4 - 1, j = 4 - 1 - 1; j >= 0; j--)
+//     //     {
+//     //         count++;
+//     //         arr[i, j] = count;
+//     //     }
+//     //     for (int i = 4 - 1 - 1, j = 0; i > 0; i--)
+//     //     {
+//     //         count++;
+//     //         arr[i, j] = count;
+//     //     }
+
+//     // }
+
+
+
+
+// }
+
+// int[,] array = new int[4, 4];
+// FillSpiralArray2d(array);
+// ShowArray2d(array);
 
 
