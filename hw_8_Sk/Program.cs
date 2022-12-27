@@ -78,21 +78,51 @@ int FindMinSumElementsOfRow(int[,] arr)
             minSum = sum;
             minRow = i;
         }
-        Console.WriteLine(i + "стр - сумма: " + sum); //для проверки
+        // if (sum = minSum) Console.WriteLine("in row № " + i);
+        //Console.WriteLine(i + "стр - сумма: " + sum); //для проверки
     }
     return minRow;
 }
 
 int[,] arrayRandom = CreateArray2d();
 ShowArray2d(arrayRandom);
+//if (arrayRandom.GetLength(0) != arrayRandom.GetLength(1)) Console.WriteLine("Эта матрица не прямоугольная (т.к. количество строк не равно количеству столбцов)");
 int rowMinSumElem = FindMinSumElementsOfRow(arrayRandom);
 Console.WriteLine("Minimum sum of elements in row № " + (rowMinSumElem + 1));
 */
 
 
 // Задача 3 - Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+// Умножить Матрицу 1 на Матрицу 2 можно, если число столбцов М1 равняется числу строк М2 
+// Произведение матрицы A размера m × n и матрицы B размера n × k  — это матрица C размера m × k, в которой элемент c i j ​равен сумме произведений элементов i строки матрицы A на соответствующие элементы j столбца матрицы B : c i j = a i 1 b 1 j + a i 2 b 2 j + . . . + a i n b n j​. 
+// Умножение матриц осуществляется путем умножения строки на столбец. Находятся произведения первого элемента строки и первого элемента столбца, второго элемента строки и второго элемента столбца и т.д. Затем полученные произведения суммируются.
 
+/*
 
+void Arr1MultiplicationArr2(int[,] arr1, int[,] arr2, int[,] arrResult)
+{
+    for (int i = 0; i < arrResult.GetLength(0); i++)
+        for (int j = 0; j < arrResult.GetLength(1); j++)
+            for (int m = 0, n = 0; m < arr1.GetLength(1) && n < arr2.GetLength(0); m++, n++)
+                arrResult[i, j] += arr1[i, m] * arr2[n, j];
+}
+
+int[,] arrayRandom1 = CreateArray2d();
+Console.WriteLine("Matrix 1: ");
+ShowArray2d(arrayRandom1);
+int[,] arrayRandom2 = CreateArray2d();
+Console.WriteLine("Matrix 2: ");
+ShowArray2d(arrayRandom2);
+
+if (arrayRandom1.GetLength(1) == arrayRandom2.GetLength(0))
+{
+    int[,] arrayMultiplication = new int[arrayRandom1.GetLength(0), arrayRandom2.GetLength(1)];
+    Arr1MultiplicationArr2(arrayRandom1, arrayRandom2, arrayMultiplication);
+    ShowArray2d(arrayMultiplication);
+}
+else Console.WriteLine("Матрицу1 нельзя перемножить на Матрицу2. Количество столбцов Матрицы 1 должно равняться количеству строк Матрицы 2");
+
+*/
 
 
 
