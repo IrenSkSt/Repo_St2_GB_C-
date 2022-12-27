@@ -1,4 +1,5 @@
 ﻿// Методы общие для задач 1, 2, 3
+/*
 int[,] CreateArray2d()
 {
     Console.WriteLine("Input a size array:");
@@ -31,6 +32,7 @@ void ShowArray2d(int[,] arr)
     Console.WriteLine();
 }
 
+*/
 // Задача 1 - Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 /*
@@ -128,8 +130,48 @@ else Console.WriteLine("Матрицу1 нельзя перемножить на
 
 // Задача 4 - Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента. Вывод слоями.
 
+void Create3dArrayRandom(int[,,] arr, int min, int max)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+        for (int j = 0; j < arr.GetLength(1); j++)
+            for (int k = 0; k < arr.GetLength(2); k++)
+                arr[i, j, k] = new Random().Next(min, max + 1);
+}
+
+void ShowArray3d(int[,,] arr)
+{
+    for (int k = 0; k < arr.GetLength(2); k++)
+    {
+        Console.WriteLine(k + "-й слой");
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+                Console.Write($"{arr[i, j, k]} ({i}, {j}, {k})" + "\t");
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+    }
 
 
+
+}
+
+Console.WriteLine("Input size of 3d array: ");
+Console.Write("1st dimension: ");
+int x = Convert.ToInt32(Console.ReadLine());
+Console.Write("2nd dimension: ");
+int y = Convert.ToInt32(Console.ReadLine());
+Console.Write("3rd dimension: ");
+int z = Convert.ToInt32(Console.ReadLine());
+int min = 10, max = 99;
+
+if (x * y * z <= (max - min)) // возможность неповторять двузначные числа
+{
+    int[,,] array3dRandom = new int[x, y, z];
+    Create3dArrayRandom(array3dRandom, min, max);
+    ShowArray3d(array3dRandom);
+}
+else Console.WriteLine("Невозможно создать 3-хмерный массив такого размера с НЕповторяющимися двузначными значениями.");
 
 
 
