@@ -132,21 +132,73 @@ else Console.WriteLine("Матрицу1 нельзя перемножить на
 
 void Create3dArrayRandom(int[,,] arr, int min, int max)
 {
+
     for (int i = 0; i < arr.GetLength(0); i++)
         for (int j = 0; j < arr.GetLength(1); j++)
             for (int k = 0; k < arr.GetLength(2); k++)
-                arr[i, j, k] = new Random().Next(min, max + 1);
+            {
+                //arr[i, j, k] = new Random().Next(min, max + 1); // 1й вариант: генерация без проверки на дубль значений
+
+                if (i == 0 && j == 0 && k == 0) arr[i, j, k] = new Random().Next(min, max + 1);
+                else
+                {
+                    arr[i, j, k] = new Random().Next(min, max + 1);
+                    Console.Write(arr[i, j, k] + "\t"); // для проверки
+                    bool isOneNum;
+
+                    for (int x = 0; x < i; x++)
+                        for (int y = 0; y < j; y++)
+                            for (int z = 0; z < k; z++)
+                            {
+
+                                if (arr[x, y, z] == arr[i, j, k]) //проверка дублей
+                                {
+                                    Console.Write(arr[i, j, k] + "==" + arr[x, y, z] + "\t"); // для проверки
+                                    isOneNum = false;
+
+                                }
+                                else isOneNum = true;
+                                Console.WriteLine(isOneNum);
+                            }
+
+                    //     while (isOneNum == false)
+                    //     {
+
+                    //         arr[i, j, k] = new Random().Next(min, max + 1);
+                    //         Console.Write(arr[i, j, k] + "\t"); // для проверки
+
+                    //         for (int x = 0; x < i; x++)
+                    //             for (int y = 0; y < j; y++)
+                    //                 for (int z = 0; z < k; z++)
+                    //                 {
+
+                    //                     if (arr[x, y, z] == arr[i, j, k]) //проверка дублей
+                    //                     {
+                    //                         Console.Write(arr[i, j, k] + "==" + arr[x, y, z] + "\t"); // для проверки
+                    //                         isOneNum = false;
+                    //                         break;
+                    //                     }
+                    //                     else isOneNum = true;
+                    //                 }
+                    //     }
+                    //     
+                    // }
+
+                }
+
+            }
 }
 
 void ShowArray3d(int[,,] arr)
 {
     for (int k = 0; k < arr.GetLength(2); k++)
     {
-        Console.WriteLine(k + "-й слой");
+        Console.WriteLine((k + 1) + "-й слой");
         for (int i = 0; i < arr.GetLength(0); i++)
         {
             for (int j = 0; j < arr.GetLength(1); j++)
-                Console.Write($"{arr[i, j, k]} ({i}, {j}, {k})" + "\t");
+                //Console.Write($"{arr[i, j, k]} ({i}, {j}, {k})" + "\t"); // вариант с координатами - подходит для проверки
+                Console.Write(arr[i, j, k] + "\t");
             Console.WriteLine();
         }
         Console.WriteLine();
