@@ -142,59 +142,15 @@ void Create3dArrayRandom(int[,,] arr, int min, int max)
                 if (i == 0 && j == 0 && k == 0) arr[i, j, k] = new Random().Next(min, max + 1);
                 else
                 {
-                    arr[i, j, k] = new Random().Next(min, max + 1);
-                    Console.Write(arr[i, j, k] + "\t"); // для проверки
-                    bool isOneNum = CheckRepeatValue(arr, arr[i, j, k], i, j, k);
-                    Console.Write(isOneNum + "\t"); // для проверки
-
+                    bool isOneNum = false;
                     while (isOneNum == false)
                     {
                         arr[i, j, k] = new Random().Next(min, max + 1);
                         Console.Write(arr[i, j, k] + "\t"); // для проверки
-                        isOneNum = CheckRepeatValue(arr, arr[i, j, k], i, j, k);
+                        isOneNum = CheckRepeatValue(arr, arr[i, j, k], i, j, k); // проверка на дубль
                         Console.Write(isOneNum + "\t"); // для проверки
-
+                        if (isOneNum == true) break;
                     }
-
-
-
-                    // for (int x = 0; x < i; x++)
-                    //     for (int y = 0; y < j; y++)
-                    //         for (int z = 0; z < k; z++)
-                    //         {
-
-                    //             if (arr[x, y, z] == arr[i, j, k]) //проверка дублей
-                    //             {
-                    //                 Console.Write(arr[i, j, k] + "==" + arr[x, y, z] + "\t"); // для проверки
-                    //                 isOneNum = false;
-
-                    //             }
-                    //             else isOneNum = true;
-                    //             Console.WriteLine(isOneNum);
-                    //         }
-
-                    //     while (isOneNum == false)
-                    //     {
-
-                    //         arr[i, j, k] = new Random().Next(min, max + 1);
-                    //         Console.Write(arr[i, j, k] + "\t"); // для проверки
-
-                    //         for (int x = 0; x < i; x++)
-                    //             for (int y = 0; y < j; y++)
-                    //                 for (int z = 0; z < k; z++)
-                    //                 {
-
-                    //                     if (arr[x, y, z] == arr[i, j, k]) //проверка дублей
-                    //                     {
-                    //                         Console.Write(arr[i, j, k] + "==" + arr[x, y, z] + "\t"); // для проверки
-                    //                         isOneNum = false;
-                    //                         break;
-                    //                     }
-                    //                     else isOneNum = true;
-                    //                 }
-                    //     }
-                    //     
-                    // }
 
                 }
 
@@ -203,14 +159,17 @@ void Create3dArrayRandom(int[,,] arr, int min, int max)
 
 bool CheckRepeatValue(int[,,] arr, int num, int i, int j, int k)
 {
-    for (int z = 0; z < k; z++)
-        for (int x = 0; x < i; x++)
-            for (int y = 0; y < j; y++)
+    bool isOne = true;
+    for (int x = 0; x < i; x++)
+        for (int y = 0; y < j; y++)
+            for (int z = 0; z < k; z++)
             {
-                if (arr[x, y, z] == num) return false;
-                else return true;
+                Console.Write(arr[x, y, z] + "=" + num + "\t"); // для проверки
+                if (arr[x, y, z] == num) return isOne = false;
+
             }
 
+    return isOne;
 }
 
 void ShowArray3d(int[,,] arr)
