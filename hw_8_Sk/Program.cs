@@ -1,4 +1,4 @@
-﻿// Методы общие для задач 1, 2, 3
+﻿// Методы общие для задач 1, 2, 3? 5
 /*
 int[,] CreateArray2d()
 {
@@ -20,7 +20,8 @@ int[,] CreateArray2d()
             arr[i, j] = new Random().Next(min, max + 1);
     return arr;
 }
-
+*/
+/*
 void ShowArray2d(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -31,8 +32,8 @@ void ShowArray2d(int[,] arr)
     }
     Console.WriteLine();
 }
-
 */
+
 // Задача 1 - Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 /*
@@ -129,6 +130,7 @@ else Console.WriteLine("Матрицу1 нельзя перемножить на
 
 
 // Задача 4 - Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента. Вывод слоями.
+/*
 
 void Create3dArrayRandom(int[,,] arr, int min, int max)
 {
@@ -146,9 +148,9 @@ void Create3dArrayRandom(int[,,] arr, int min, int max)
                     while (isOneNum == false)
                     {
                         arr[i, j, k] = new Random().Next(min, max + 1);
-                        Console.Write(arr[i, j, k] + "\t"); // для проверки
+                        // Console.Write(arr[i, j, k] + "\t"); // для проверки
                         isOneNum = CheckRepeatValue(arr, arr[i, j, k], i, j, k); // проверка на дубль
-                        Console.Write(isOneNum + "\t"); // для проверки
+                        // Console.Write(isOneNum + "\t"); // для проверки
                         if (isOneNum == true) break;
                     }
 
@@ -160,15 +162,18 @@ void Create3dArrayRandom(int[,,] arr, int min, int max)
 bool CheckRepeatValue(int[,,] arr, int num, int i, int j, int k)
 {
     bool isOne = true;
-    for (int x = 0; x < i; x++)
-        for (int y = 0; y < j; y++)
-            for (int z = 0; z < k; z++)
+    for (int x = 0; x < arr.GetLength(0); x++)
+        for (int y = 0; y < arr.GetLength(1); y++)
+            for (int z = 0; z < arr.GetLength(2); z++)
             {
-                Console.Write(arr[x, y, z] + "=" + num + "\t"); // для проверки
-                if (arr[x, y, z] == num) return isOne = false;
+                // Console.Write(arr[x, y, z] + "=" + num + "\t"); // для проверки
+                if (arr[x, y, z] == num)
+                    if (x == i && y == j && z == k) isOne = true; //Console.WriteLine("Сравниваем само с собой"); // для проверки
+                    else return isOne = false;
+                // Console.Write(isOne); // для проверки
 
             }
-
+    // Console.Write(isOne);
     return isOne;
 }
 
@@ -208,86 +213,65 @@ if (x * y * z <= (max - min)) // возможность неповторять �
 }
 else Console.WriteLine("Невозможно создать 3-хмерный массив такого размера с НЕповторяющимися двузначными значениями.");
 
-
+*/
 
 
 
 // Задача 5 - Напишите программу, которая заполнит спирально массив 4 на 4.
+//TO WORK: Работает 2х2, 3х3, 4х4 - а дальше надо разбираться с зависимостями и дорабатывать.
 
-// void FillSpiralArray2d(int[,] arr)
-// {
-//     int size = arr.GetLength(0);
-//     int count = 0;
-//     int rowCount = 0;
-//     int columnCount = 0;
+/*
+void FillSpiralArray2d(int[,] arr, int size)
+{
+    int count = 0;
+    int a = 0;
+    int b = 0;
+    int n = size;
 
-//     while (count < arr.Length)
-//     {
-//         for (int i = rowCount, j = columnCount; j < size; j++)
-//         {
-//             count++;
-//             arr[i, j] = count;
+    while (count < arr.Length)
+    {
+        for (int i = a, j = b; j < n; j++)
+        {
+            if (count++ >= arr.Length) break;
+            arr[i, j] = count;
+            Console.Write(arr[i, j] + $"[{i},{j}] ");
+        }
+        a++;
 
-//         }
-//         rowCount++;
-//         columnCount = size - 1;
-//         for (int i = rowCount, j = columnCount; i < size; i++)
-//         {
-//             count++;
-//             arr[i, j] = count;
-//         }
-//         rowCount = size - 1;
-//         columnCount--;
-//         for (int i = rowCount, j = columnCount; j >= 0; j--)
-//         {
-//             count++;
-//             arr[i, j] = count;
-//         }
-//         rowCount--;
-//         columnCount = 0;
-//         for (int i = rowCount, j = columnCount; i >= 0 + 1; i--)
-//         {
-//             count++;
-//             arr[i, j] = count;
-//         }
-//         rowCount = 0 + 1;
-//         columnCount = 0;
-//     }
+        for (int i = a, j = n - 1; i < n; i++)
+        {
+            if (count++ >= arr.Length) break;
+            arr[i, j] = count;
+            Console.Write(arr[i, j] + $"[{i},{j}] ");
+        }
+        n--;
 
+        for (int i = n, j = n - 1; j > 0; j--)
+        {
+            if (count++ >= arr.Length) break;
+            arr[i, j] = count;
+            Console.Write(arr[i, j] + $"[{i},{j}] ");
+        }
 
-
-//     // {
-//     //     for (int i = 0, j = 0; j < 4; j++)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-
-//     //     for (int i = 1, j = 4 - 1; i < 4; i++)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-//     //     for (int i = 4 - 1, j = 4 - 1 - 1; j >= 0; j--)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-//     //     for (int i = 4 - 1 - 1, j = 0; i > 0; i--)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-
-//     // }
+        for (int i = n, j = b; i > 0; i--)
+        {
+            if (count++ >= arr.Length) break;
+            arr[i, j] = count;
+            Console.Write(arr[i, j] + $"[{i},{j}] ");
+        }
+        Console.WriteLine();
+        b++;
+    }
+}
 
 
 
 
-// }
+Console.Write("Input size square matrix: ");
+int n = Convert.ToInt32(Console.ReadLine());
 
-// int[,] array = new int[4, 4];
-// FillSpiralArray2d(array);
-// ShowArray2d(array);
+int[,] array = new int[n, n];
+FillSpiralArray2d(array, n);
+ShowArray2d(array);
 
-
+*/
