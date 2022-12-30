@@ -1,4 +1,4 @@
-﻿// Методы общие для задач 1, 2, 3? 5
+﻿// Методы общие для задач 1, 2, 3, 5
 /*
 int[,] CreateArray2d()
 {
@@ -21,6 +21,7 @@ int[,] CreateArray2d()
     return arr;
 }
 */
+
 /*
 void ShowArray2d(int[,] arr)
 {
@@ -130,6 +131,7 @@ else Console.WriteLine("Матрицу1 нельзя перемножить на
 
 
 // Задача 4 - Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента. Вывод слоями.
+
 /*
 
 void Create3dArrayRandom(int[,,] arr, int min, int max)
@@ -155,6 +157,7 @@ void Create3dArrayRandom(int[,,] arr, int min, int max)
                     }
 
 
+                }
             }
 }
 
@@ -220,6 +223,7 @@ else Console.WriteLine("Невозможно создать 3-хмерный м�
 //TO WORK: Работает 2х2, 3х3, 4х4 - а дальше надо разбираться с зависимостями и дорабатывать.
 
 /*
+
 void FillSpiralArray2d(int[,] arr, int size)
 {
     int count = 0;
@@ -233,7 +237,7 @@ void FillSpiralArray2d(int[,] arr, int size)
         {
             if (count++ >= arr.Length) break;
             arr[i, j] = count;
-            Console.Write(arr[i, j] + $"[{i},{j}] ");
+            //Console.Write(arr[i, j] + $"[{i},{j}] "); //для проверки
         }
         a++;
 
@@ -241,7 +245,7 @@ void FillSpiralArray2d(int[,] arr, int size)
         {
             if (count++ >= arr.Length) break;
             arr[i, j] = count;
-            Console.Write(arr[i, j] + $"[{i},{j}] ");
+            //Console.Write(arr[i, j] + $"[{i},{j}] "); //для проверки
         }
         n--;
 
@@ -249,21 +253,19 @@ void FillSpiralArray2d(int[,] arr, int size)
         {
             if (count++ >= arr.Length) break;
             arr[i, j] = count;
-            Console.Write(arr[i, j] + $"[{i},{j}] ");
+            //Console.Write(arr[i, j] + $"[{i},{j}] "); //для проверки
         }
 
         for (int i = n, j = b; i > 0; i--)
         {
             if (count++ >= arr.Length) break;
             arr[i, j] = count;
-            Console.Write(arr[i, j] + $"[{i},{j}] ");
+            //Console.Write(arr[i, j] + $"[{i},{j}] "); //для проверки
         }
         Console.WriteLine();
         b++;
     }
 }
-
-
 
 
 Console.Write("Input size square matrix: ");
