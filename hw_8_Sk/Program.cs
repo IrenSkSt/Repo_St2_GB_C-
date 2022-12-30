@@ -139,38 +139,12 @@ void Create3dArrayRandom(int[,,] arr, int min, int max)
             {
                 //arr[i, j, k] = new Random().Next(min, max + 1); // 1й вариант: генерация без проверки на дубль значений
 
-                if (i == 0 && j == 0 && k == 0) arr[i, j, k] = new Random().Next(min, max + 1);
-                else
-                {
-                    bool isOneNum = false;
-                    while (isOneNum == false)
-                    {
-                        arr[i, j, k] = new Random().Next(min, max + 1);
-                        Console.Write(arr[i, j, k] + "\t"); // для проверки
-                        isOneNum = CheckRepeatValue(arr, arr[i, j, k], i, j, k); // проверка на дубль
-                        Console.Write(isOneNum + "\t"); // для проверки
-                        if (isOneNum == true) break;
-                    }
 
-                }
 
             }
 }
 
-bool CheckRepeatValue(int[,,] arr, int num, int i, int j, int k)
-{
-    bool isOne = true;
-    for (int x = 0; x < i; x++)
-        for (int y = 0; y < j; y++)
-            for (int z = 0; z < k; z++)
-            {
-                Console.Write(arr[x, y, z] + "=" + num + "\t"); // для проверки
-                if (arr[x, y, z] == num) return isOne = false;
 
-            }
-
-    return isOne;
-}
 
 void ShowArray3d(int[,,] arr)
 {
@@ -223,63 +197,10 @@ else Console.WriteLine("Невозможно создать 3-хмерный м�
 
 //     while (count < arr.Length)
 //     {
-//         for (int i = rowCount, j = columnCount; j < size; j++)
-//         {
-//             count++;
-//             arr[i, j] = count;
-
-//         }
-//         rowCount++;
-//         columnCount = size - 1;
-//         for (int i = rowCount, j = columnCount; i < size; i++)
-//         {
-//             count++;
-//             arr[i, j] = count;
-//         }
-//         rowCount = size - 1;
-//         columnCount--;
-//         for (int i = rowCount, j = columnCount; j >= 0; j--)
-//         {
-//             count++;
-//             arr[i, j] = count;
-//         }
-//         rowCount--;
-//         columnCount = 0;
-//         for (int i = rowCount, j = columnCount; i >= 0 + 1; i--)
-//         {
-//             count++;
-//             arr[i, j] = count;
-//         }
-//         rowCount = 0 + 1;
-//         columnCount = 0;
+//         
 //     }
 
 
-
-//     // {
-//     //     for (int i = 0, j = 0; j < 4; j++)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-
-//     //     for (int i = 1, j = 4 - 1; i < 4; i++)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-//     //     for (int i = 4 - 1, j = 4 - 1 - 1; j >= 0; j--)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-//     //     for (int i = 4 - 1 - 1, j = 0; i > 0; i--)
-//     //     {
-//     //         count++;
-//     //         arr[i, j] = count;
-//     //     }
-
-//     // }
 
 
 
